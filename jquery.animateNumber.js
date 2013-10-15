@@ -4,7 +4,8 @@
  */
 (function($) {
 
-  $.fn.animateNumber = function(options) {
+  // using string name to avoid Google Closure Compiler compression
+  $.fn['animateNumber'] = function(options) {
     var data_extractor = function(node, attr_name, default_value){
           var data_value = node.data(attr_name);
           return parseInt(data_value ? data_value : default_value);
@@ -16,16 +17,18 @@
             from = data_extractor(target_node, 'animate-number-from', target_node.text()),
             defaults = {
               step: function(now, fx) {
-                target_node.text(now);
-              }  
+                var value = Math.floor(now);
+                target_node.text(value);
+              }
             },
-            settings = $.extend(defaults, options);
+            settings = $.extend(defaults, options),
+            to = (settings.to ? settings.to : 0);
 
         target_node
           .prop('number', from)
           .animate(
             {
-              number: data_extractor(target_node, 'animate-number-to', options.to)
+              number: data_extractor(target_node, 'animate-number-to', to)
             },
             settings
           );
