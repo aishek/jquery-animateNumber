@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>jquery.animateNumber by aishek</title>
+    <title>jquery.animateNumber – simple number animation jQuery plugin</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -11,6 +11,10 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="javascripts/jquery.easing.1.3.js"></script>
+    <script src="javascripts/jquery.animateNumber.min.js"></script>
   </head>
   <body>
     <div class="wrapper">
@@ -23,42 +27,89 @@
 
         <ul>
           <li><a href="https://github.com/aishek/jquery-animateNumber/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/aishek/jquery-animateNumber/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <!--li><a href="https://github.com/aishek/jquery-animateNumber/tarball/master">Download <strong>TAR Ball</strong></a></li-->
           <li><a href="https://github.com/aishek/jquery-animateNumber">View On <strong>GitHub</strong></a></li>
         </ul>
       </header>
       <section>
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+        <h3><a name="example-1" class="anchor" href="#example-1"><span class="octicon octicon-link"></span></a>Example 1: simple animation</h3>
+        <p>World population is <span id="world-population">0</span>.</p>
+<pre><code>&lt;p&gt;World population is &lt;span id="world-population"&gt;0&lt;/span&gt;.&lt;/p&gt;
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+$('#world-population').animateNumber(
+  {
+    to: 7095217980
+  }
+);
 </code></pre>
+        <button id="world-population-run" style="margin-bottom: 50px;">Run example</button>
+        <script type="text/javascript">
+          $('#world-population-run').click(function(){
+            $('#world-population').animateNumber(
+              {
+                to: 7095217980
+              }
+            );
+            return false;
+          });
+        </script>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+        <h3><a name="example-2" class="anchor" href="#example-2"><span class="octicon octicon-link"></span></a>Example 2: data attributes</h3>
+        <p>Distance from Sun to Earth is <span id="distance" data-animate-number-from="0" data-animate-number-to="149600000"></span> km.</p>
+<pre><code>&lt;p&gt;Distance from Sun to Earth is &lt;span id="distance" data-animate-number-from="0" data-animate-number-to="149 600 000"&gt;&lt;/span&gt; km.&lt;/p&gt;
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+$('#distance').animateNumber();
+</code></pre>
+        <button id="distance-run" style="margin-bottom: 50px;">Run example</button>
+        <script type="text/javascript">
+          $('#distance-run').click(function(){
+            $('#distance').animateNumber();
+            return false;
+          });
+        </script>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+        <h3><a name="example-2" class="anchor" href="#example-2"><span class="octicon octicon-link"></span></a>Example 3: multiple properties</h3>
+        <p>Fun level <span id="fun-level" style="color: #0f0;">0 %</span>.</p>
+<pre><code>&lt;p&gt;Fun level &lt;span id="fun-level" style="color: #0f0;"&gt;0 %&lt;/span&gt;.&lt;/p&gt;
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+$('#fun-level').animateNumber(
+  {
+    to: 100,
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+    easing: 'easeInQuad',
+    duration: 5000,
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+    step: function(now, fx) {
+      var value = Math.floor(now),
+          percent_value = value + ' %';
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+      $(fx.elem).text(percent_value);
+    }
+  }
+);
+</code></pre>
+        <button id="fun-level-run">Run example</button>
+        <script type="text/javascript">
+          $('#fun-level-run').click(function(){
+            $('#fun-level').animateNumber(
+              {
+                to: 100,
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+                easing: 'easeInQuad',
+                duration: 5000,
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+                step: function(now, fx) {
+                  var value = Math.floor(now),
+                      percent_value = value + ' %';
+
+                  $(fx.elem).text(percent_value);
+                }
+              }
+            );
+            return false;
+          });
+        </script>
+
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/aishek">aishek</a></p>
@@ -66,6 +117,5 @@ $ git checkout gh-pages
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
-    
   </body>
 </html>
