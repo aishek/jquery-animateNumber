@@ -5,6 +5,10 @@
 
 // ['...'] notation using to avoid names minification by Google Closure Compiler
 (function($) {
+  if (!$['Tween'] || !$['Tween']['propHooks']) {
+    throw new Error('jquery.animateNumber requires jQuery 1.8.0 or higher');
+  }
+
   var defaults = {
     number_step: function(now, tween) {
       var floored_number = Math.floor(now),
