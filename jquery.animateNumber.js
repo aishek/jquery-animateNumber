@@ -1,39 +1,63 @@
-/** @preserve jQuery animateNumber plugin v0.0.1
+/** @preserve jQuery animateNumber plugin v0.0.2
  * (c) 2013, Alexandr Borisov.
  * https://github.com/aishek/jquery-animateNumber
  */
+
+// ['...'] notation using to avoid names minification by Google Closure Compiler
 (function($) {
+  var defaults = {
+    number_step: function(now, tween) {
+      var floored_number = Math.floor(now),
+          target = $(tween.elem);
+      
+      target.text(floored_number);
+    }
+  };
 
-  // using string name to avoid Google Closure Compiler compression
-  $.fn['animateNumber'] = function(options) {
-    var data_extractor = function(node, attr_name, default_value){
-          var data_value = node.data(attr_name);
-          return parseInt(data_value ? data_value : default_value);
-        };
+  $['Tween']['propHooks']['number'] = {
+    set: function( tween ) {
+      if ( tween['elem']['nodeType'] && tween['elem']['parentNode'] ) {
+        var handler = tween['elem']['_animateNumberSetter'];
+        if (!handler) {
+          handler = defaults.number_step;
+        }
 
-    return this.each(
-      function(){
-        var target_node = $(this),
-            from = data_extractor(target_node, 'animate-number-from', target_node.text()),
-            defaults = {
-              step: function(now, fx) {
-                var value = Math.floor(now);
-                target_node.text(value);
-              }
-            },
-            settings = $.extend(defaults, options),
-            to = (settings.to ? settings.to : 0);
-
-        target_node
-          .prop('number', from)
-          .animate(
-            {
-              number: data_extractor(target_node, 'animate-number-to', to)
-            },
-            settings
-          );
+        handler(tween.now, tween);
       }
-    );
+    }
+  };
+
+  $.fn['animateNumber'] = function() {
+    var options = arguments[0],
+        settings = $.extend(defaults, options),
+        
+        target = $(this),
+        args = [settings],
+        animate_result;
+
+    for(var i = 1, l = arguments.length; i < l; i++) {
+      args.push(arguments[i]);
+    }
+    
+    // needs of custom step function usage
+    if (options.number_step) {      
+      // assigns custom step functions
+      this.each(function(){
+        this['_animateNumberSetter'] = options.number_step;
+      });
+
+      animate_result = target.animate.apply(target, args);
+
+      // cleanup of custom step functions
+      this.each(function(){
+        delete this['_animateNumberSetter'];
+      });
+    }
+    else {
+      animate_result = target.animate.apply(target, args);
+    }
+
+    return animate_result;
   };
 
 }(jQuery));

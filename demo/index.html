@@ -1,0 +1,23 @@
+<p>Fun level <span id="target" style="font-size: 10px; color: red;">0 %</span>.</p>
+
+<!--script src="http://code.jquery.com/jquery-1.10.1.min.js"></script-->
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="jquery.color.js"></script>
+<script src="../jquery.animateNumber.min.js"></script>
+<script>
+  $('#target').animateNumber(
+    {
+      number: 100,
+      color: 'green',
+      'font-size': '30px',
+      
+      number_step: function(now, tween) {
+        var floored_number = Math.floor(now),
+            target = $(tween.elem);
+        
+        target.text(floored_number + ' %');
+      }
+    },
+    15000
+  )
+</script>

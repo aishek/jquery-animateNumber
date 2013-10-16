@@ -19,10 +19,7 @@ module.exports = function(grunt) {
         js: 'jquery.animateNumber.js',
         jsOutputFile: 'jquery.animateNumber.min.js',
         noreport: true,
-        options: {
-          externs: 'contrib/externs/jquery-1.9.js',
-          compilation_level: 'ADVANCED_OPTIMIZATIONS'
-        }
+        options: {}
       }
     }
   });
@@ -33,5 +30,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-closure-compiler');
 
   // Задача по умолчанию (`grunt` в терминале)
-  grunt.registerTask('default', ['uglify']);
+  grunt.registerTask('default', ['closure-compiler']);
 };
