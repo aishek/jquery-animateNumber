@@ -87,7 +87,7 @@ $('#fun-level').animateNumber(
 );
 </code></pre>
         <p>Fun level <span id="fun-level" style="color: red;">0 %</span>.</p>
-        <button id="fun-level-run">Run example</button>
+        <button id="fun-level-run" style="margin-bottom: 50px;">Run example</button>
         <script type="text/javascript">
           $('#fun-level-run').click(function(){
             var percent_number_step = $.animateNumber.number_step_factories.append(' %')
@@ -102,6 +102,44 @@ $('#fun-level').animateNumber(
                 number_step: percent_number_step
               },
               15000
+            );
+            return false;
+          });
+        </script>
+
+        <h3><a name="example-4" class="anchor" href="#example-4"><span class="octicon octicon-link"></span></a>Example 4: custom number step handler</h3>
+<pre><code>&lt;p&gt;Points per pixel &lt;span id="points"&gt;0&lt;/span&gt;.&lt;/p&gt;
+
+$('#points').animateNumber(
+  {
+    number: 72,
+    duration: 'slow',
+    number_step: function(now, tween) {
+      var target = $(tween.elem);
+
+      target
+        .prop('number', now) // keep current prop value
+        .text(now);
+    }
+  }
+);
+</code></pre>
+        <p>Points per pixel <span id="points">0</span>.</p>
+        <button id="points-run" style="margin-bottom: 50px;">Run example</button>
+        <script type="text/javascript">
+          $('#points-run').click(function(){
+            $('#points').animateNumber(
+              {
+                number: 72,
+                duration: 'slow',
+                number_step: function(now, tween) {
+                  var target = $(tween.elem);
+
+                  target
+                    .prop('number', now) // keep current prop value
+                    .text(now);
+                }
+              }
             );
             return false;
           });
