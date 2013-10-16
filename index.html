@@ -12,99 +12,96 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
     <script src="javascripts/jquery.easing.1.3.js"></script>
+    <script src="javascripts/jquery.color.js"></script>
     <script src="javascripts/jquery.animateNumber.js"></script>
   </head>
   <body>
     <div class="wrapper">
       <header>
         <h1>jquery.animateNumber</h1>
-        <p>jQuery animate number plugin</p>
 
-        <p class="view"><a href="https://github.com/aishek/jquery-animateNumber">View the Project on GitHub <small>aishek/jquery-animateNumber</small></a></p>
-
-
-        <ul>
+        <ul style="margin-bottom: 50px;">
           <li><a href="https://github.com/aishek/jquery-animateNumber/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/aishek/jquery-animateNumber/releases/tag/v0.0.1">Download <strong>v0.0.1</strong></a></li>
+          <li><a href="https://github.com/aishek/jquery-animateNumber/releases/tag/v0.0.3">Download <strong>v0.0.3</strong></a></li>
           <li><a href="https://github.com/aishek/jquery-animateNumber">View On <strong>GitHub</strong></a></li>
         </ul>
       </header>
       <section>
         <h3><a name="example-1" class="anchor" href="#example-1"><span class="octicon octicon-link"></span></a>Example 1: simple animation</h3>
-        <p>World population is <span id="world-population">0</span>.</p>
+<pre><code>&lt;p&gt;This plugin only &lt;span id="lines"&gt;0&lt;/span&gt; lines of code.&lt;/p&gt;
+
+$('#lines').animateNumber({ number: 117 });
+</code></pre>
+        <p>This plugin only <span id="lines">0</span> lines of code.</p>
+        <button id="lines-run" style="margin-bottom: 50px;">Run example</button>
+        <script type="text/javascript">
+          $('#lines-run').click(function(){
+            $('#lines').animateNumber({ number: 117 });
+            return false;
+          });
+        </script>
+
+        <h3><a name="example-2" class="anchor" href="#example-2"><span class="octicon octicon-link"></span></a>Example 2: separators</h3>
 <pre><code>&lt;p&gt;World population is &lt;span id="world-population"&gt;0&lt;/span&gt;.&lt;/p&gt;
 
+var comma_separator_number_step = $.animateNumber.number_step_factories.separator(',')
 $('#world-population').animateNumber(
   {
-    to: 7095217980
+    number: 7095217980,
+    number_step: comma_separator_number_step
   }
 );
 </code></pre>
+        <p>World population is <span id="world-population">0</span>.</p>
         <button id="world-population-run" style="margin-bottom: 50px;">Run example</button>
         <script type="text/javascript">
           $('#world-population-run').click(function(){
+            var comma_separator_number_step = $.animateNumber.number_step_factories.separator(',')
             $('#world-population').animateNumber(
               {
-                to: 7095217980
+                number: 7095217980,
+                number_step: comma_separator_number_step
               }
             );
             return false;
           });
         </script>
 
-        <h3><a name="example-2" class="anchor" href="#example-2"><span class="octicon octicon-link"></span></a>Example 2: data attributes</h3>
-        <p>Distance from Sun to Earth is <span id="distance" data-animate-number-from="0" data-animate-number-to="149600000"></span> km.</p>
-<pre><code>&lt;p&gt;Distance from Sun to Earth is &lt;span id="distance" data-animate-number-from="0" data-animate-number-to="149 600 000"&gt;&lt;/span&gt; km.&lt;/p&gt;
+        <h3><a name="example-3" class="anchor" href="#example-3"><span class="octicon octicon-link"></span></a>Example 3: multiple properties</h3>
+<pre><code>&lt;p&gt;Fun level &lt;span id="fun-level" style="color: red;"&gt;0 %&lt;/span&gt;.&lt;/p&gt;
 
-$('#distance').animateNumber();
-</code></pre>
-        <button id="distance-run" style="margin-bottom: 50px;">Run example</button>
-        <script type="text/javascript">
-          $('#distance-run').click(function(){
-            $('#distance').animateNumber();
-            return false;
-          });
-        </script>
-
-        <h3><a name="example-2" class="anchor" href="#example-2"><span class="octicon octicon-link"></span></a>Example 3: multiple properties</h3>
-        <p>Fun level <span id="fun-level" style="color: #0f0;">0 %</span>.</p>
-<pre><code>&lt;p&gt;Fun level &lt;span id="fun-level" style="color: #0f0;"&gt;0 %&lt;/span&gt;.&lt;/p&gt;
-
+var percent_number_step = $.animateNumber.number_step_factories.append(' %')
 $('#fun-level').animateNumber(
   {
-    to: 100,
+    number: 100,
+    color: 'green',
+    'font-size': '30px',
 
     easing: 'easeInQuad',
-    duration: 5000,
 
-    step: function(now, fx) {
-      var value = Math.floor(now),
-          percent_value = value + ' %';
-
-      $(fx.elem).text(percent_value);
-    }
-  }
+    number_step: percent_number_step
+  },
+  15000
 );
 </code></pre>
+        <p>Fun level <span id="fun-level" style="color: red;">0 %</span>.</p>
         <button id="fun-level-run">Run example</button>
         <script type="text/javascript">
           $('#fun-level-run').click(function(){
+            var percent_number_step = $.animateNumber.number_step_factories.append(' %')
             $('#fun-level').animateNumber(
               {
-                to: 100,
+                number: 100,
+                color: 'green',
+                'font-size': '30px',
 
                 easing: 'easeInQuad',
-                duration: 5000,
 
-                step: function(now, fx) {
-                  var value = Math.floor(now),
-                      percent_value = value + ' %';
-
-                  $(fx.elem).text(percent_value);
-                }
-              }
+                number_step: percent_number_step
+              },
+              15000
             );
             return false;
           });
