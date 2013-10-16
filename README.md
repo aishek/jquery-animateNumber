@@ -1,39 +1,37 @@
 jquery-animateNumber
 ====================
 
+[Demo](http://aishek.github.io/jquery-animateNumber/) | [Latest Release v0.0.2](https://github.com/aishek/jquery-animateNumber/releases/tag/v0.0.2)
+
 jQuery numbers animation plugin.
 
-[Demo](http://aishek.github.io/jquery-animateNumber/) | [Latest Release v0.0.1](https://github.com/aishek/jquery-animateNumber/releases/tag/v0.0.1)
+Requires jQuery 1.8.0 or higher (tested with 2.0.3, 2.0.2, 2.0.1, 2.0.0, 1.10.2, 1.10.1, 1.10.0, 1.9.1, 1.9.0, 1.8.3, 1.8.2, 1.8.1, 1.8.0).
 
-## Quick examples
+## Quick example
 ```html
-<p>Fun level <span id="fun-level" style="color: #0f0;">0 %</span>.</p>
+<p>Fun level <span id="fun-level" style="color: red; font-size: 0px;">0 %</span>.</p>
 ```
 
 ```js
 $('#fun-level').animateNumber(
   {
-    to: 100,
+    number: 100,
+    color: 'green', // require jquery.color
+    'font-size': '50px',
 
-    easing: 'easeInQuad',
-    duration: 5000,
+    easing: 'easeInQuad', // require jquery.easing
 
-    step: function(now, fx) {
-      var value = Math.floor(now),
-          percent_value = value + ' %';
+    // optional custom step function
+    // using here to keep '%' sign after number
+    number_step: function(now, tween) {
+      var floored_number = Math.floor(now),
+          target = $(tween.elem);
 
-      $(fx.elem).text(percent_value);
+      target.text(floored_number + ' %');
     }
-  }
+  },
+  1800
 );
-```
-
-```html
-<p>Distance from Sun to Earth is <span id="distance" data-animate-number-from="0" data-animate-number-to="149 600 000"></span> km.</p>
-```
-
-```js
-$('#distance').animateNumber();
 ```
 
 ## Development
