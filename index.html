@@ -113,14 +113,14 @@ $('#fun-level').animateNumber(
 $('#points').animateNumber(
   {
     number: 72,
-    duration: 'slow',
     number_step: function(now, tween) {
       var target = $(tween.elem);
 
       target
         .prop('number', now) // keep current prop value
         .text(now);
-    }
+    },
+    'slow'
   }
 );
 </code></pre>
@@ -131,7 +131,6 @@ $('#points').animateNumber(
             $('#points').animateNumber(
               {
                 number: 72,
-                duration: 'slow',
                 number_step: function(now, tween) {
                   var target = $(tween.elem);
 
@@ -139,12 +138,40 @@ $('#points').animateNumber(
                     .prop('number', now) // keep current prop value
                     .text(now);
                 }
-              }
+              },
+              'slow'
             );
             return false;
           });
         </script>
 
+        <h3><a name="example-5" class="anchor" href="#example-5"><span class="octicon octicon-link"></span></a>Example 5: custom animation start point</h3>
+<pre><code>&lt;p id="ten"&gt;From ten to hundred.&lt;/p&gt;
+
+$('#ten')
+  .prop('number', 10)
+  .animateNumber(
+    {
+      number: 100
+    },
+    20000
+  );
+</code></pre>
+        <p id="ten">From ten to hundred.</p>
+        <button id="ten-run">Run example</button>
+        <script type="text/javascript">
+          $('#ten-run').click(function(){
+            $('#ten')
+              .prop('number', 10)
+              .animateNumber(
+                {
+                  number: 100
+                },
+                20000
+              );
+            return false;
+          });
+        </script>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/aishek">aishek</a></p>
