@@ -13,7 +13,7 @@
     number_step: function(now, tween) {
       var floored_number = Math.floor(now),
           target = $(tween.elem);
-      
+
       target.text(floored_number);
     }
   };
@@ -31,10 +31,58 @@
     }
   };
 
+  $['animateNumber'] = {
+    number_step_factories: {
+      append: function(suffix) {
+        return function(now, tween) {
+          var floored_number = Math.floor(now),
+              target = $(tween.elem);
+
+          target.prop('number', now).text(floored_number + suffix);
+        }
+      },
+
+      separator: function(separator, group_length) {
+        separator = separator || ' ';
+        group_length = group_length || 3;
+
+        return function(now, tween) {
+          var floored_number = Math.floor(now),
+              separated_number = floored_number.toString(),
+              target = $(tween.elem);
+
+          if (separated_number.length > group_length) {
+            var numbers = separated_number.split('').reverse(),
+                number_parts = [],
+                current_number_part,
+                current_index,
+                q;
+
+            for(var i = 0, l = Math.ceil(separated_number.length / group_length); i < l; i++) {
+              current_number_part = '';
+              for(q = 0; q < group_length; q++) {
+                current_index = i * group_length + q;
+                if (current_index == separated_number.length) break;
+
+                current_number_part = current_number_part + numbers[current_index];
+              }
+              number_parts.push(current_number_part);
+            };
+
+            separated_number = number_parts.join(separator);
+            separated_number = separated_number.split('').reverse().join('');
+          }
+
+          target.prop('number', now).text(separated_number);
+        }
+      }
+    }
+  };
+
   $.fn['animateNumber'] = function() {
     var options = arguments[0],
-        settings = $.extend(defaults, options),
-        
+        settings = $.extend({}, defaults, options),
+
         target = $(this),
         args = [settings],
         animate_result;
@@ -42,26 +90,28 @@
     for(var i = 1, l = arguments.length; i < l; i++) {
       args.push(arguments[i]);
     }
-    
+
     // needs of custom step function usage
-    if (options.number_step) {      
+    if (options.number_step) {
       // assigns custom step functions
-      this.each(function(){
+      var items = this.each(function(){
         this['_animateNumberSetter'] = options.number_step;
       });
 
-      animate_result = target.animate.apply(target, args);
+      // cleanup of custom step functions after animation
+      var generic_complete = settings.complete;
+      settings.complete = function() {
+        items.each(function(){
+          delete this['_animateNumberSetter'];
+        });
 
-      // cleanup of custom step functions
-      this.each(function(){
-        delete this['_animateNumberSetter'];
-      });
-    }
-    else {
-      animate_result = target.animate.apply(target, args);
+        if ( generic_complete ) {
+          generic_complete.apply(this, arguments);
+        }
+      }
     }
 
-    return animate_result;
+    return target.animate.apply(target, args);
   };
 
 }(jQuery));
