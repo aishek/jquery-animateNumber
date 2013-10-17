@@ -1,0 +1,36 @@
+{
+    "name": "animateNumber",
+    "title": "jQuery animateNumber",
+    "description": "jQuery plugin for animation number same way which animate function does.",
+    "keywords": [
+        "number",
+        "animation"
+    ],
+    "version": "0.0.3",
+    "author": {
+        "name": "Alexandr Borisov",
+        "email": "aishek@gmail.com",
+        "url": "http://cifronomika.ru"
+    },
+    "maintainers": [
+        {
+            "name": "Alexandr Borisov",
+            "email": "aishek@gmail.com",
+            "url": "http://cifronomika.ru"
+        }
+    ],
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/aishek/jquery-animateNumber/blob/master/LICENSE"
+        }
+    ],
+    "bugs": "https://github.com/aishek/jquery-animateNumber/issues",
+    "homepage": "https://github.com/aishek/jquery-animateNumber",
+    "docs": "https://github.com/aishek/jquery-animateNumber",
+    "demo": "http://aishek.github.io/jquery-animateNumber/",
+    "download": "https://github.com/aishek/jquery-animateNumber/releases",
+    "dependencies": {
+        "jquery": ">=1.8.0"
+    }
+}
