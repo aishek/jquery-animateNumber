@@ -36,6 +36,10 @@ $('#fun-level').animateNumber(
 
 [All examples](http://aishek.github.io/jquery-animateNumber/)
 
+## Alternative plugins for same task
+
+* [jQuery Numerator](http://plugins.jquery.com/numerator/)
+
 ## Development
 
 1. `npm install grunt-cli -g`
