@@ -1,7 +1,7 @@
 jquery-animateNumber
 ====================
 
-[Demo](http://aishek.github.io/jquery-animateNumber/) | [Latest Release v0.0.4](https://github.com/aishek/jquery-animateNumber/releases/tag/v0.0.4)
+[Demo](http://aishek.github.io/jquery-animateNumber/) | [Latest Release v0.0.5](https://github.com/aishek/jquery-animateNumber/releases/tag/v0.0.5)
 
 jQuery numbers animation plugin, adds 'number' property and step function to jQuery's animate function properties.
 
@@ -13,6 +13,8 @@ Requires jQuery 1.8.0 or higher (tested with 2.0.3, 2.0.2, 2.0.1, 2.0.0, 1.10.2,
 ```
 
 ```js
+// animateNumber accepts same arguments, as animate
+// is adds only number and numberStep params
 $('#fun-level').animateNumber(
   {
     number: 100,
@@ -23,7 +25,7 @@ $('#fun-level').animateNumber(
 
     // optional custom step function
     // using here to keep '%' sign after number
-    number_step: function(now, tween) {
+    numberStep: function(now, tween) {
       var floored_number = Math.floor(now),
           target = $(tween.elem);
 

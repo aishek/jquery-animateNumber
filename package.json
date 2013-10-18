@@ -1,6 +1,6 @@
 {
   "name": "jquery.animateNumber.js",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-watch": "~0.5.3",
