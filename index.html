@@ -24,7 +24,7 @@
 
         <ul style="margin-bottom: 50px;">
           <li><a href="https://github.com/aishek/jquery-animateNumber/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/aishek/jquery-animateNumber/releases/tag/v0.0.4">Download <strong>v0.0.4</strong></a></li>
+          <li><a href="https://github.com/aishek/jquery-animateNumber/releases/tag/v0.0.5">Download <strong>v0.0.5</strong></a></li>
           <li><a href="https://github.com/aishek/jquery-animateNumber">View On <strong>GitHub</strong></a></li>
         </ul>
       </header>
@@ -46,11 +46,11 @@ $('#lines').animateNumber({ number: 117 });
         <h3><a name="example-2" class="anchor" href="#example-2"><span class="octicon octicon-link"></span></a>Example 2: separators</h3>
 <pre><code>&lt;p&gt;World population is &lt;span id="world-population"&gt;0&lt;/span&gt;.&lt;/p&gt;
 
-var comma_separator_number_step = $.animateNumber.number_step_factories.separator(',')
+var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',')
 $('#world-population').animateNumber(
   {
     number: 7095217980,
-    number_step: comma_separator_number_step
+    numberStep: comma_separator_number_step
   }
 );
 </code></pre>
@@ -58,11 +58,11 @@ $('#world-population').animateNumber(
         <button id="world-population-run" style="margin-bottom: 50px;">Run example</button>
         <script type="text/javascript">
           $('#world-population-run').click(function(){
-            var comma_separator_number_step = $.animateNumber.number_step_factories.separator(',')
+            var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',')
             $('#world-population').animateNumber(
               {
                 number: 7095217980,
-                number_step: comma_separator_number_step
+                numberStep: comma_separator_number_step
               }
             );
             return false;
@@ -72,7 +72,7 @@ $('#world-population').animateNumber(
         <h3><a name="example-3" class="anchor" href="#example-3"><span class="octicon octicon-link"></span></a>Example 3: multiple properties</h3>
 <pre><code>&lt;p&gt;Fun level &lt;span id="fun-level" style="color: red;"&gt;0 %&lt;/span&gt;.&lt;/p&gt;
 
-var percent_number_step = $.animateNumber.number_step_factories.append(' %')
+var percent_number_step = $.animateNumber.numberStepFactories.append(' %')
 $('#fun-level').animateNumber(
   {
     number: 100,
@@ -81,7 +81,7 @@ $('#fun-level').animateNumber(
 
     easing: 'easeInQuad',
 
-    number_step: percent_number_step
+    numberStep: percent_number_step
   },
   15000
 );
@@ -90,7 +90,7 @@ $('#fun-level').animateNumber(
         <button id="fun-level-run" style="margin-bottom: 50px;">Run example</button>
         <script type="text/javascript">
           $('#fun-level-run').click(function(){
-            var percent_number_step = $.animateNumber.number_step_factories.append(' %')
+            var percent_number_step = $.animateNumber.numberStepFactories.append(' %')
             $('#fun-level').animateNumber(
               {
                 number: 100,
@@ -99,7 +99,7 @@ $('#fun-level').animateNumber(
 
                 easing: 'easeInQuad',
 
-                number_step: percent_number_step
+                numberStep: percent_number_step
               },
               15000
             );
@@ -113,7 +113,7 @@ $('#fun-level').animateNumber(
 $('#points').animateNumber(
   {
     number: 72,
-    number_step: function(now, tween) {
+    numberStep: function(now, tween) {
       var target = $(tween.elem);
 
       target
@@ -131,7 +131,7 @@ $('#points').animateNumber(
             $('#points').animateNumber(
               {
                 number: 72,
-                number_step: function(now, tween) {
+                numberStep: function(now, tween) {
                   var target = $(tween.elem);
 
                   target
