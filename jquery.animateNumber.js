@@ -69,6 +69,10 @@
               number_parts.push(current_number_part);
             };
 
+            // remove precending zeros
+            var last = number_parts[number_parts.length - 1];
+            number_parts[number_parts.length - 1] = parseInt(last);
+
             separated_number = number_parts.join(separator);
             separated_number = separated_number.split('').reverse().join('');
           }
