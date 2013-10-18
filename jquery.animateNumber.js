@@ -84,8 +84,7 @@
         settings = $.extend({}, defaults, options),
 
         target = $(this),
-        args = [settings],
-        animate_result;
+        args = [settings];
 
     for(var i = 1, l = arguments.length; i < l; i++) {
       args.push(arguments[i]);
