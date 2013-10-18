@@ -1,4 +1,4 @@
-/** @preserve jQuery animateNumber plugin v0.0.5
+/** @preserve jQuery animateNumber plugin v0.0.6
  * (c) 2013, Alexandr Borisov.
  * https://github.com/aishek/jquery-animateNumber
  */
@@ -33,6 +33,19 @@
 
   $['animateNumber'] = {
     numberStepFactories: {
+      /**
+       * Creates numberStep handler, which appends string to floored animated number on each step.
+       *
+       * @example
+       * // will animate to 100 with "1 %", "2 %", "3 %", ...
+       * $('#someid').animateNumber({
+       *   number: 100,
+       *   numberStep: $.animateNumber.numberStepFactories.append(' %')
+       * });
+       *
+       * @params {String} suffix string to append to animated number
+       * @returns {Function} numberStep-compatible function for use in animateNumber's parameters
+       */
       append: function(suffix) {
         return function(now, tween) {
           var floored_number = Math.floor(now),
@@ -42,6 +55,20 @@
         }
       },
 
+      /**
+       * Creates numberStep handler, which format floored numbers by separating them to groups.
+       *
+       * @example
+       * // will animate with 1 ... 217,980 ... 95,217,980 ... 7,095,217,980
+       * $('#world-population').animateNumber({
+       *    number: 7095217980,
+       *    numberStep: $.animateNumber.numberStepFactories.separator(',')
+       * });
+       *
+       * @params {String} [separator=' '] string to separate number groups
+       * @params {String} [group_length=3] number group length
+       * @returns {Function} numberStep-compatible function for use in animateNumber's parameters
+       */
       separator: function(separator, group_length) {
         separator = separator || ' ';
         group_length = group_length || 3;
@@ -69,6 +96,10 @@
               number_parts.push(current_number_part);
             };
 
+            // remove precending zeros
+            var last = number_parts[number_parts.length - 1];
+            number_parts[number_parts.length - 1] = parseInt(last);
+
             separated_number = number_parts.join(separator);
             separated_number = separated_number.split('').reverse().join('');
           }
@@ -84,8 +115,7 @@
         settings = $.extend({}, defaults, options),
 
         target = $(this),
-        args = [settings],
-        animate_result;
+        args = [settings];
 
     for(var i = 1, l = arguments.length; i < l; i++) {
       args.push(arguments[i]);
