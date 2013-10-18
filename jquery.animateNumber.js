@@ -1,4 +1,4 @@
-/** @preserve jQuery animateNumber plugin v0.0.4
+/** @preserve jQuery animateNumber plugin v0.0.5
  * (c) 2013, Alexandr Borisov.
  * https://github.com/aishek/jquery-animateNumber
  */
@@ -10,7 +10,7 @@
   }
 
   var defaults = {
-    number_step: function(now, tween) {
+    numberStep: function(now, tween) {
       var floored_number = Math.floor(now),
           target = $(tween.elem);
 
@@ -23,7 +23,7 @@
       if ( tween['elem']['nodeType'] && tween['elem']['parentNode'] ) {
         var handler = tween['elem']['_animateNumberSetter'];
         if (!handler) {
-          handler = defaults.number_step;
+          handler = defaults.numberStep;
         }
 
         handler(tween.now, tween);
@@ -32,7 +32,7 @@
   };
 
   $['animateNumber'] = {
-    number_step_factories: {
+    numberStepFactories: {
       append: function(suffix) {
         return function(now, tween) {
           var floored_number = Math.floor(now),
@@ -92,10 +92,10 @@
     }
 
     // needs of custom step function usage
-    if (options.number_step) {
+    if (options.numberStep) {
       // assigns custom step functions
       var items = this.each(function(){
-        this['_animateNumberSetter'] = options.number_step;
+        this['_animateNumberSetter'] = options.numberStep;
       });
 
       // cleanup of custom step functions after animation
