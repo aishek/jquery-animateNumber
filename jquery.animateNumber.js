@@ -1,4 +1,4 @@
-/** @preserve jQuery animateNumber plugin v0.0.5
+/** @preserve jQuery animateNumber plugin v0.0.6
  * (c) 2013, Alexandr Borisov.
  * https://github.com/aishek/jquery-animateNumber
  */
