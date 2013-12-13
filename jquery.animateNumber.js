@@ -9,6 +9,10 @@
     throw new Error('jquery.animateNumber requires jQuery 1.8.0 or higher');
   }
 
+  var reverse = function(value) {
+    return value.split('').reverse().join('');
+  };
+
   var defaults = {
     numberStep: function(now, tween) {
       var floored_number = Math.floor(now),
@@ -97,11 +101,11 @@
             };
 
             // remove precending zeros
-            var last = number_parts[number_parts.length - 1];
-            number_parts[number_parts.length - 1] = parseInt(last);
+            var last = reverse(number_parts[number_parts.length - 1]);
+            number_parts[number_parts.length - 1] = reverse(parseInt(last).toString());
 
             separated_number = number_parts.join(separator);
-            separated_number = separated_number.split('').reverse().join('');
+            separated_number = reverse(separated_number);
           }
 
           target.prop('number', now).text(separated_number);
