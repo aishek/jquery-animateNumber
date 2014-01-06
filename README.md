@@ -1,7 +1,9 @@
 jquery-animateNumber
 ====================
 
-[Demo](http://aishek.github.io/jquery-animateNumber/) | [Latest Release v0.0.7](https://github.com/aishek/jquery-animateNumber/releases/tag/v0.0.7)
+[Demo](http://aishek.github.io/jquery-animateNumber/) | [v0.0.7 – Latest Release](https://github.com/aishek/jquery-animateNumber/releases/tag/v0.0.7)
+
+[README на русском языке](https://github.com/aishek/jquery-animateNumber/README.ru.md)
 
 jQuery numbers animation plugin, adds 'number' property and step function to jQuery's animate function properties.
 
