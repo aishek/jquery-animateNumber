@@ -13,8 +13,8 @@ Requires jQuery 1.8.0 or higher (tested with 2.0.3, 2.0.2, 2.0.1, 2.0.0, 1.10.2,
 ```
 
 ```js
-// animateNumber accepts same arguments, as animate
-// is adds only number and numberStep params
+// animateNumber accepts same arguments, as animate does
+// it adds only 'number' and 'numberStep' params
 $('#fun-level').animateNumber(
   {
     number: 100,
