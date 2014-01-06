@@ -61,6 +61,8 @@ It is free software, and may be redistributed under the terms specified in the L
 
 ## Credits
 
+jquery-animateNumber is maintained by [Cifronomika](http://cifronomika.ru/).
+
 Contributors:
 
 * [Alexandr Borisov](https://github.com/aishek)
