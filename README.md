@@ -1,13 +1,13 @@
 jquery-animateNumber
 ====================
 
-[Demo](http://aishek.github.io/jquery-animateNumber/) | [v0.0.7 – Latest Release](https://github.com/aishek/jquery-animateNumber/releases/tag/v0.0.7)
+[Demo](http://aishek.github.io/jquery-animateNumber/) | [v0.0.8 – Latest Release](https://github.com/aishek/jquery-animateNumber/releases/tag/v0.0.8)
 
 [README на русском языке](https://github.com/aishek/jquery-animateNumber/blob/master/README.ru.md)
 
 jQuery numbers animation plugin, adds 'number' property and step function to jQuery's animate function properties.
 
-Requires jQuery 1.8.0 or higher (tested with 2.0.3, 2.0.2, 2.0.1, 2.0.0, 1.10.2, 1.10.1, 1.10.0, 1.9.1, 1.9.0, 1.8.3, 1.8.2, 1.8.1, 1.8.0).
+Requires jQuery 1.7.0 or higher (tested with 2.0.3, 2.0.2, 2.0.1, 2.0.0, 1.10.2, 1.10.1, 1.10.0, 1.9.1, 1.9.0, 1.8.3, 1.8.2, 1.8.1, 1.8.0, 1.7.0).
 
 ## Quick example
 ```html
@@ -68,3 +68,4 @@ jquery-animateNumber is maintained by [Cifronomika](http://cifronomika.ru/).
 Contributors:
 
 * [Alexandr Borisov](https://github.com/aishek)
+* [Greg Thornton](https://github.com/xdissent)
