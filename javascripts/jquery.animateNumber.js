@@ -1,14 +1,10 @@
-/** @preserve jQuery animateNumber plugin v0.0.7
+/** @preserve jQuery animateNumber plugin v0.0.8
  * (c) 2013, Alexandr Borisov.
  * https://github.com/aishek/jquery-animateNumber
  */
 
 // ['...'] notation using to avoid names minification by Google Closure Compiler
 (function($) {
-  if (!$['Tween'] || !$['Tween']['propHooks']) {
-    throw new Error('jquery.animateNumber requires jQuery 1.8.0 or higher');
-  }
-
   var reverse = function(value) {
     return value.split('').reverse().join('');
   };
@@ -22,18 +18,23 @@
     }
   };
 
-  $['Tween']['propHooks']['number'] = {
-    set: function( tween ) {
-      if ( tween['elem']['nodeType'] && tween['elem']['parentNode'] ) {
-        var handler = tween['elem']['_animateNumberSetter'];
-        if (!handler) {
-          handler = defaults.numberStep;
-        }
-
-        handler(tween.now, tween);
+  var handle = function( tween ) {
+    if ( tween['elem']['nodeType'] && tween['elem']['parentNode'] ) {
+      var handler = tween['elem']['_animateNumberSetter'];
+      if (!handler) {
+        handler = defaults.numberStep;
       }
+      handler(tween.now, tween);
     }
   };
+
+  if (!$['Tween'] || !$['Tween']['propHooks']) {
+    $['fx']['step']['number'] = handle;
+  } else {
+    $['Tween']['propHooks']['number'] = {
+      set: handle
+    };
+  }
 
   $['animateNumber'] = {
     numberStepFactories: {
