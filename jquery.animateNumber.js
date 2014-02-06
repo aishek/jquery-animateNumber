@@ -19,8 +19,9 @@
   };
 
   var handle = function( tween ) {
-    if ( tween['elem']['nodeType'] && tween['elem']['parentNode'] ) {
-      var handler = tween['elem']['_animateNumberSetter'];
+    var elem = tween.elem;
+    if ( elem.nodeType && elem.parentNode ) {
+      var handler = elem._animateNumberSetter;
       if (!handler) {
         handler = defaults.numberStep;
       }
@@ -28,15 +29,15 @@
     }
   };
 
-  if (!$['Tween'] || !$['Tween']['propHooks']) {
-    $['fx']['step']['number'] = handle;
+  if (!$.Tween || !$.Tween.propHooks) {
+    $.fx.step.number = handle;
   } else {
-    $['Tween']['propHooks']['number'] = {
+    $.Tween.propHooks.number = {
       set: handle
     };
   }
 
-  $['animateNumber'] = {
+  $.animateNumber = {
     numberStepFactories: {
       /**
        * Creates numberStep handler, which appends string to floored animated number on each step.
@@ -117,7 +118,7 @@
     }
   };
 
-  $.fn['animateNumber'] = function() {
+  $.fn.animateNumber = function() {
     var options = arguments[0],
         settings = $.extend({}, defaults, options),
 
@@ -132,14 +133,14 @@
     if (options.numberStep) {
       // assigns custom step functions
       var items = this.each(function(){
-        this['_animateNumberSetter'] = options.numberStep;
+        this._animateNumberSetter = options.numberStep;
       });
 
       // cleanup of custom step functions after animation
       var generic_complete = settings.complete;
       settings.complete = function() {
         items.each(function(){
-          delete this['_animateNumberSetter'];
+          delete this._animateNumberSetter;
         });
 
         if ( generic_complete ) {
