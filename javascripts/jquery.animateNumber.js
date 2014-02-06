@@ -1,4 +1,4 @@
-/** @preserve jQuery animateNumber plugin v0.0.8
+/** @preserve jQuery animateNumber plugin v0.0.9
  * (c) 2013, Alexandr Borisov.
  * https://github.com/aishek/jquery-animateNumber
  */
@@ -19,8 +19,9 @@
   };
 
   var handle = function( tween ) {
-    if ( tween['elem']['nodeType'] && tween['elem']['parentNode'] ) {
-      var handler = tween['elem']['_animateNumberSetter'];
+    var elem = tween.elem;
+    if ( elem.nodeType && elem.parentNode ) {
+      var handler = elem._animateNumberSetter;
       if (!handler) {
         handler = defaults.numberStep;
       }
@@ -28,15 +29,45 @@
     }
   };
 
-  if (!$['Tween'] || !$['Tween']['propHooks']) {
-    $['fx']['step']['number'] = handle;
+  if (!$.Tween || !$.Tween.propHooks) {
+    $.fx.step.number = handle;
   } else {
-    $['Tween']['propHooks']['number'] = {
+    $.Tween.propHooks.number = {
       set: handle
     };
   }
 
-  $['animateNumber'] = {
+  var extract_number_parts = function(separated_number, group_length) {
+    var numbers = separated_number.split('').reverse(),
+        number_parts = [],
+        current_number_part,
+        current_index,
+        q;
+
+    for(var i = 0, l = Math.ceil(separated_number.length / group_length); i < l; i++) {
+      current_number_part = '';
+      for(q = 0; q < group_length; q++) {
+        current_index = i * group_length + q;
+        if (current_index === separated_number.length) {
+          break;
+        }
+
+        current_number_part = current_number_part + numbers[current_index];
+      }
+      number_parts.push(current_number_part);
+    }
+
+    return number_parts;
+  };
+
+  var remove_precending_zeros = function(number_parts) {
+    var last_index = number_parts.length - 1,
+        last = reverse(number_parts[last_index]);
+
+    number_parts[last_index] = reverse(parseInt(last, 10).toString());
+  };
+
+  $.animateNumber = {
     numberStepFactories: {
       /**
        * Creates numberStep handler, which appends string to floored animated number on each step.
@@ -57,7 +88,7 @@
               target = $(tween.elem);
 
           target.prop('number', now).text(floored_number + suffix);
-        }
+        };
       },
 
       /**
@@ -84,38 +115,19 @@
               target = $(tween.elem);
 
           if (separated_number.length > group_length) {
-            var numbers = separated_number.split('').reverse(),
-                number_parts = [],
-                current_number_part,
-                current_index,
-                q;
+            var number_parts = extract_number_parts(separated_number, group_length);
 
-            for(var i = 0, l = Math.ceil(separated_number.length / group_length); i < l; i++) {
-              current_number_part = '';
-              for(q = 0; q < group_length; q++) {
-                current_index = i * group_length + q;
-                if (current_index == separated_number.length) break;
-
-                current_number_part = current_number_part + numbers[current_index];
-              }
-              number_parts.push(current_number_part);
-            };
-
-            // remove precending zeros
-            var last = reverse(number_parts[number_parts.length - 1]);
-            number_parts[number_parts.length - 1] = reverse(parseInt(last).toString());
-
-            separated_number = number_parts.join(separator);
+            separated_number = remove_precending_zeros(number_parts).join(separator);
             separated_number = reverse(separated_number);
           }
 
           target.prop('number', now).text(separated_number);
-        }
+        };
       }
     }
   };
 
-  $.fn['animateNumber'] = function() {
+  $.fn.animateNumber = function() {
     var options = arguments[0],
         settings = $.extend({}, defaults, options),
 
@@ -130,20 +142,20 @@
     if (options.numberStep) {
       // assigns custom step functions
       var items = this.each(function(){
-        this['_animateNumberSetter'] = options.numberStep;
+        this._animateNumberSetter = options.numberStep;
       });
 
       // cleanup of custom step functions after animation
       var generic_complete = settings.complete;
       settings.complete = function() {
         items.each(function(){
-          delete this['_animateNumberSetter'];
+          delete this._animateNumberSetter;
         });
 
         if ( generic_complete ) {
           generic_complete.apply(this, arguments);
         }
-      }
+      };
     }
 
     return target.animate.apply(target, args);
