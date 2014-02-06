@@ -94,12 +94,14 @@
               current_number_part = '';
               for(q = 0; q < group_length; q++) {
                 current_index = i * group_length + q;
-                if (current_index == separated_number.length) break;
+                if (current_index === separated_number.length) {
+                  break;
+                }
 
                 current_number_part = current_number_part + numbers[current_index];
               }
               number_parts.push(current_number_part);
-            };
+            }
 
             // remove precending zeros
             var last = reverse(number_parts[number_parts.length - 1]);
@@ -110,7 +112,7 @@
           }
 
           target.prop('number', now).text(separated_number);
-        }
+        };
       }
     }
   };
@@ -143,7 +145,7 @@
         if ( generic_complete ) {
           generic_complete.apply(this, arguments);
         }
-      }
+      };
     }
 
     return target.animate.apply(target, args);
