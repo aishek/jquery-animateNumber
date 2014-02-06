@@ -58,7 +58,7 @@
               target = $(tween.elem);
 
           target.prop('number', now).text(floored_number + suffix);
-        }
+        };
       },
 
       /**
@@ -106,7 +106,7 @@
 
             // remove precending zeros
             var last = reverse(number_parts[number_parts.length - 1]);
-            number_parts[number_parts.length - 1] = reverse(parseInt(last).toString());
+            number_parts[number_parts.length - 1] = reverse(parseInt(last, 10).toString());
 
             separated_number = number_parts.join(separator);
             separated_number = reverse(separated_number);
