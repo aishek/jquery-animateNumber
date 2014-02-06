@@ -37,6 +37,36 @@
     };
   }
 
+  var extract_number_parts = function(separated_number) {
+    var numbers = separated_number.split('').reverse(),
+        number_parts = [],
+        current_number_part,
+        current_index,
+        q;
+
+    for(var i = 0, l = Math.ceil(separated_number.length / group_length); i < l; i++) {
+      current_number_part = '';
+      for(q = 0; q < group_length; q++) {
+        current_index = i * group_length + q;
+        if (current_index === separated_number.length) {
+          break;
+        }
+
+        current_number_part = current_number_part + numbers[current_index];
+      }
+      number_parts.push(current_number_part);
+    }
+
+    return number_parts;
+  };
+
+  var remove_precending_zeros = function(number_parts) {
+    var last_index = number_parts.length - 1,
+        last = reverse(number_parts[last_index]);
+
+    number_parts[last_index] = reverse(parseInt(last, 10).toString());
+  };
+
   $.animateNumber = {
     numberStepFactories: {
       /**
@@ -85,30 +115,9 @@
               target = $(tween.elem);
 
           if (separated_number.length > group_length) {
-            var numbers = separated_number.split('').reverse(),
-                number_parts = [],
-                current_number_part,
-                current_index,
-                q;
+            var number_parts = extract_number_parts(separated_number);
 
-            for(var i = 0, l = Math.ceil(separated_number.length / group_length); i < l; i++) {
-              current_number_part = '';
-              for(q = 0; q < group_length; q++) {
-                current_index = i * group_length + q;
-                if (current_index === separated_number.length) {
-                  break;
-                }
-
-                current_number_part = current_number_part + numbers[current_index];
-              }
-              number_parts.push(current_number_part);
-            }
-
-            // remove precending zeros
-            var last = reverse(number_parts[number_parts.length - 1]);
-            number_parts[number_parts.length - 1] = reverse(parseInt(last, 10).toString());
-
-            separated_number = number_parts.join(separator);
+            separated_number = remove_precending_zeros(number_parts).join(separator);
             separated_number = reverse(separated_number);
           }
 
