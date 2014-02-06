@@ -37,7 +37,7 @@
     };
   }
 
-  var extract_number_parts = function(separated_number) {
+  var extract_number_parts = function(separated_number, group_length) {
     var numbers = separated_number.split('').reverse(),
         number_parts = [],
         current_number_part,
@@ -115,7 +115,7 @@
               target = $(tween.elem);
 
           if (separated_number.length > group_length) {
-            var number_parts = extract_number_parts(separated_number);
+            var number_parts = extract_number_parts(separated_number, group_length);
 
             separated_number = remove_precending_zeros(number_parts).join(separator);
             separated_number = reverse(separated_number);
