@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/aishek/jquery-animateNumber.png)](https://codeclimate.com/github/aishek/jquery-animateNumber)
+
 jquery-animateNumber
 ====================
 
