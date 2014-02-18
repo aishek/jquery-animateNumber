@@ -65,6 +65,7 @@
         last = reverse(number_parts[last_index]);
 
     number_parts[last_index] = reverse(parseInt(last, 10).toString());
+	return number_parts;
   };
 
   $.animateNumber = {
