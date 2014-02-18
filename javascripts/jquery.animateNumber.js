@@ -1,4 +1,4 @@
-/** @preserve jQuery animateNumber plugin v0.0.9
+/** @preserve jQuery animateNumber plugin v0.0.10
  * (c) 2013, Alexandr Borisov.
  * https://github.com/aishek/jquery-animateNumber
  */
@@ -65,6 +65,7 @@
         last = reverse(number_parts[last_index]);
 
     number_parts[last_index] = reverse(parseInt(last, 10).toString());
+    return number_parts;
   };
 
   $.animateNumber = {
