@@ -3,7 +3,7 @@
 jquery-animateNumber
 ====================
 
-[Demo](http://aishek.github.io/jquery-animateNumber/) | [v0.0.9 – Latest Release](https://github.com/aishek/jquery-animateNumber/releases/tag/v0.0.9)
+[Demo](http://aishek.github.io/jquery-animateNumber/) | [v0.0.10 – Latest Release](https://github.com/aishek/jquery-animateNumber/releases/tag/v0.0.10)
 
 [README на русском языке](https://github.com/aishek/jquery-animateNumber/blob/master/README.ru.md)
 
@@ -71,3 +71,4 @@ Contributors:
 
 * [Alexandr Borisov](https://github.com/aishek)
 * [Greg Thornton](https://github.com/xdissent)
+* [Tomáš Opekar](https://github.com/topik)
