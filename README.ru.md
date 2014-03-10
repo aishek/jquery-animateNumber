@@ -7,7 +7,7 @@ jquery-animateNumber
 
 [README in english](https://github.com/aishek/jquery-animateNumber)
 
-Этот плагин для jQuery позволяет анимировать числа, добавляя к функции $.animate свойства number и numberStepю
+Этот плагин для jQuery позволяет анимировать числа, добавляя к функции $.animate свойства number и numberStep.
 
 Работает с jQuery 1.7.0 или более новой версией (тестировался на версиях 2.0.3, 2.0.2, 2.0.1, 2.0.0, 1.10.2, 1.10.1, 1.10.0, 1.9.1, 1.9.0, 1.8.3, 1.8.2, 1.8.1, 1.8.0, 1.7.0).
 
