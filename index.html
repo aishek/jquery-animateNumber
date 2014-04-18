@@ -173,6 +173,71 @@ $('#ten')
           });
         </script>
       </section>
+
+        <h3><a name="example-6" class="anchor" href="#example-6"><span class="octicon octicon-link"></span></a>Example 6: decimal places</h3>
+<pre><code>&lt;p id="decimals"&gt;From $0,00 to $5,00&lt;/p&gt;
+
+// how many decimal places allows
+var decimal_places = 2;
+var decimal_factor = decimal_places === 0 ? 1 : decimal_places * 10;
+
+$('#decimals')
+  .animateNumber(
+    {
+      number: 5 * decimal_factor,
+
+      numberStep: function(now, tween) {
+        var floored_number = Math.floor(now) / decimal_factor,
+            target = $(tween.elem);
+
+        if (decimal_places > 0) {
+          // force decimal places even if they are 0
+          floored_number = floored_number.toFixed(decimal_places);
+
+          // replace '.' separator with ','
+          floored_number = floored_number.toString().replace('.', ',');
+        }
+
+        target.text('$' + floored_number);
+      }
+    },
+    20000
+  );
+</code></pre>
+        <p id="decimals">From $0,00 to $5,00</p>
+        <button id="decimals-run">Run example</button>
+        <script type="text/javascript">
+          $('#decimals-run').click(function(){
+            // how many decimal places allows
+            var decimal_places = 2;
+            var decimal_factor = decimal_places === 0 ? 1 : decimal_places * 10;
+
+            $('#decimals')
+              .animateNumber(
+                {
+                  number: 5 * decimal_factor,
+                  numberStep: function(now, tween) {
+                    var floored_number = Math.floor(now) / decimal_factor,
+                        target = $(tween.elem);
+
+                    if (decimal_places > 0) {
+                      // force decimal places even if they are 0
+                      floored_number = floored_number.toFixed(decimal_places);
+
+                      // replace '.' separator with ','
+                      floored_number = floored_number.toString().replace('.', ',');
+                    }
+
+                    target.text('$' + floored_number);
+                  }
+                },
+                20000
+              );
+            return false;
+          });
+        </script>
+      </section>
+
       <footer>
         <p>This project is maintained by <a href="https://github.com/aishek">aishek</a></p>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
