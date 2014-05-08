@@ -158,7 +158,7 @@ $('#ten')
   );
 </code></pre>
         <p id="ten">From ten to hundred.</p>
-        <button id="ten-run">Run example</button>
+        <button id="ten-run" style="margin-bottom: 50px;">Run example</button>
         <script type="text/javascript">
           $('#ten-run').click(function(){
             $('#ten')
@@ -172,7 +172,6 @@ $('#ten')
             return false;
           });
         </script>
-      </section>
 
         <h3><a name="example-6" class="anchor" href="#example-6"><span class="octicon octicon-link"></span></a>Example 6: decimal places</h3>
 <pre><code>&lt;p id="decimals"&gt;From $0,00 to $5,00&lt;/p&gt;
@@ -205,7 +204,7 @@ $('#decimals')
   );
 </code></pre>
         <p id="decimals">From $0,00 to $5,00</p>
-        <button id="decimals-run">Run example</button>
+        <button id="decimals-run" style="margin-bottom: 50px;">Run example</button>
         <script type="text/javascript">
           $('#decimals-run').click(function(){
             // how many decimal places allows
@@ -232,6 +231,50 @@ $('#decimals')
                   }
                 },
                 20000
+              );
+            return false;
+          });
+        </script>
+
+        <h3><a name="example-7" class="anchor" href="#example-7"><span class="octicon octicon-link"></span></a>Example 7: reverse countdown</h3>
+<pre><code>&lt;p id="revese-countdown"&gt;10&lt;/p&gt;
+
+$('#revese-countdown')
+  .prop('number', 10)
+  .animateNumber(
+    {
+      number: 0,
+      numberStep: function(now, tween) {
+        var target = $(tween.elem),
+            rounded_now = Math.round(now);
+
+        target.text(now === tween.end ? 'Launch!' : rounded_now);
+      }
+    },
+    10000,
+    'linear'
+  );
+
+</code></pre>
+        <p id="revese-countdown">10</p>
+        <button id="revese-countdown-run">Run example</button>
+        <script type="text/javascript">
+          $('#revese-countdown-run').click(function(){
+            // how many decimal places allows
+            $('#revese-countdown')
+              .prop('number', 10)
+              .animateNumber(
+                {
+                  number: 0,
+                  numberStep: function(now, tween) {
+                    var target = $(tween.elem),
+                        rounded_now = Math.round(now);
+
+                    target.text(rounded_now === tween.end ? 'Launch!' : rounded_now);
+                  }
+                },
+                10000,
+                'linear'
               );
             return false;
           });
