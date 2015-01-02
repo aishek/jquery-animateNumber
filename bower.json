@@ -1,0 +1,32 @@
+{
+  "name": "jquery-animateNumber",
+  "version": "0.0.10",
+  "homepage": "https://github.com/aishek/jquery-animateNumber",
+  "authors": [
+    "Alexandr Borisov <aishek@gmail.com>",
+    "Greg Thornton",
+    "Tomáš Opekar"
+  ],
+  "description": "jQuery animate number plugin",
+  "main": "jquery.animateNumber.js",
+  "keywords": [
+    "jquery",
+    "animate",
+    "number"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "demo",
+    "package.json",
+    "animateNumber.jquery.json",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": ">=1.7.0"
+  }
+}
+
