@@ -281,6 +281,40 @@ $('#revese-countdown')
         </script>
       </section>
 
+        <h3><a name="example-8" class="anchor" href="#example-8"><span class="octicon octicon-link"></span></a>Example 8: end animation callback</h3>
+<pre><code>&lt;p id="countdown"&gt;10&lt;/p&gt;
+
+$('#countdown')
+  .animateNumber(
+    {
+      number: 10
+    },
+    'normal',
+    function() {
+      $('#countdown').text('Countdown completed!')
+    }
+  );
+
+</code></pre>
+        <p id="countdown">0</p>
+        <button id="countdown-complete-run">Run example</button>
+        <script type="text/javascript">
+          $('#countdown-complete-run').click(function(){
+            // how many decimal places allows
+            $('#countdown')
+              .animateNumber(
+                {
+                  number: 10
+                },
+                'normal',
+                function(){
+                  $('#countdown').text('Countdown completed!')
+                }
+              );
+            return false;
+          });
+        </script>
+      </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/aishek">aishek</a></p>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
