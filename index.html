@@ -281,6 +281,7 @@ $('#revese-countdown')
         </script>
       </section>
 
+      <section>
         <h3><a name="example-8" class="anchor" href="#example-8"><span class="octicon octicon-link"></span></a>Example 8: end animation callback</h3>
 <pre><code>&lt;p id="countdown"&gt;10&lt;/p&gt;
 
@@ -312,6 +313,70 @@ $('#countdown')
                 }
               );
             return false;
+          });
+        </script>
+      </section>
+
+      <section>
+        <h3><a name="example-9" class="anchor" href="#example-9"><span class="octicon octicon-link"></span></a>Example 9: animation with checkbox</h3>
+<pre><code>&lt;p&gt;
+  &lt;label&gt;&lt;input type="checkbox" id="checkbox"&gt; use max power&lt;/label&gt;
+  &lt;br&gt;
+  Power: &lt;span id="power"&gt;10&lt;/span&gt;%
+&lt;/p&gt;
+
+&lt;script type="text/javascript"&gt;
+  var numberStep = function(now, tween) {
+    var target = $(tween.elem),
+        rounded_now = Math.round(now);
+
+    target.prop('number', rounded_now).text(rounded_now);
+  };
+
+  var use_max_power = $('#checkbox');
+  use_max_power.click(function(){
+    if ( use_max_power.is(':checked') ) {
+      $('#power').stop().animateNumber({
+        number: 100,
+        numberStep: numberStep
+      }, 5000);
+    }
+    else {
+      $('#power').stop().animateNumber({
+        number: 10,
+        numberStep: numberStep
+      }, 5000);
+    }
+  });
+&lt;/script&gt;
+</code></pre>
+        <p>
+          <label><input type="checkbox" id="checkbox"> use max power</label>
+          <br>
+          Power: <span id="power">10</span>%
+        </p>
+        <script type="text/javascript">
+          var numberStep = function(now, tween) {
+            var target = $(tween.elem),
+                rounded_now = Math.round(now);
+
+            target.prop('number', rounded_now).text(rounded_now);
+          };
+
+          var use_max_power = $('#checkbox');
+          use_max_power.click(function(){
+            if ( use_max_power.is(':checked') ) {
+              $('#power').stop().animateNumber({
+                number: 100,
+                numberStep: numberStep
+              }, 5000);
+            }
+            else {
+              $('#power').stop().animateNumber({
+                number: 10,
+                numberStep: numberStep
+              }, 5000);
+            }
           });
         </script>
       </section>
