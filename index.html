@@ -178,7 +178,7 @@ $('#ten')
 
 // how many decimal places allows
 var decimal_places = 2;
-var decimal_factor = decimal_places === 0 ? 1 : decimal_places * 10;
+var decimal_factor = decimal_places === 0 ? 1 : Math.pow(10, decimal_places);
 
 $('#decimals')
   .animateNumber(
@@ -209,7 +209,7 @@ $('#decimals')
           $('#decimals-run').click(function(){
             // how many decimal places allows
             var decimal_places = 2;
-            var decimal_factor = decimal_places === 0 ? 1 : decimal_places * 10;
+            var decimal_factor = decimal_places === 0 ? 1 : Math.pow(10, decimal_places);
 
             $('#decimals')
               .animateNumber(
