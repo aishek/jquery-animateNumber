@@ -104,6 +104,7 @@
        *
        * @params {String} [separator=' '] string to separate number groups
        * @params {String} [group_length=3] number group length
+       * @params {String} [suffix=''] suffix to append to number
        * @returns {Function} numberStep-compatible function for use in animateNumber's parameters
        */
       separator: function(separator, group_length, suffix) {
