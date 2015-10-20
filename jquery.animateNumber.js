@@ -101,6 +101,12 @@
        *    number: 7095217980,
        *    numberStep: $.animateNumber.numberStepFactories.separator(',')
        * });
+       * @example
+       * // will animate with 1% ... 217,980% ... 95,217,980% ... 7,095,217,980%
+       * $('#salesIncrease').animateNumber({
+       *   number: 7095217980,
+       *   numberStep: $.animateNumber.numberStepFactories.separator(',', 3, '%')
+       * });
        *
        * @params {String} [separator=' '] string to separate number groups
        * @params {String} [group_length=3] number group length
