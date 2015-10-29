@@ -3,7 +3,7 @@
 jquery-animateNumber
 ====================
 
-[Примеры](http://aishek.github.io/jquery-animateNumber/) | [v0.0.11 – последняя версия](https://github.com/aishek/jquery-animateNumber/releases/tag/v0.0.11)
+[Примеры](http://aishek.github.io/jquery-animateNumber/) | [v0.0.12 – последняя версия](https://github.com/aishek/jquery-animateNumber/releases/tag/v0.0.12)
 
 [README in english](https://github.com/aishek/jquery-animateNumber)
 
