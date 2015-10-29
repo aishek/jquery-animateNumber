@@ -1,4 +1,4 @@
-/** @preserve jQuery animateNumber plugin v0.0.11
+/** @preserve jQuery animateNumber plugin v0.0.12
  * (c) 2013, Alexandr Borisov.
  * https://github.com/aishek/jquery-animateNumber
  */
@@ -101,14 +101,22 @@
        *    number: 7095217980,
        *    numberStep: $.animateNumber.numberStepFactories.separator(',')
        * });
+       * @example
+       * // will animate with 1% ... 217,980% ... 95,217,980% ... 7,095,217,980%
+       * $('#salesIncrease').animateNumber({
+       *   number: 7095217980,
+       *   numberStep: $.animateNumber.numberStepFactories.separator(',', 3, '%')
+       * });
        *
        * @params {String} [separator=' '] string to separate number groups
        * @params {String} [group_length=3] number group length
+       * @params {String} [suffix=''] suffix to append to number
        * @returns {Function} numberStep-compatible function for use in animateNumber's parameters
        */
-      separator: function(separator, group_length) {
+      separator: function(separator, group_length, suffix) {
         separator = separator || ' ';
         group_length = group_length || 3;
+        suffix = suffix || '';
 
         return function(now, tween) {
           var floored_number = Math.floor(now),
@@ -122,7 +130,7 @@
             separated_number = reverse(separated_number);
           }
 
-          target.prop('number', now).text(separated_number);
+          target.prop('number', now).text(separated_number + suffix);
         };
       }
     }
