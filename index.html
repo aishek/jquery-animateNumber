@@ -380,6 +380,75 @@ $('#countdown')
           });
         </script>
       </section>
+      <section>
+        <h3><a name="example-10" class="anchor" href="#example-9"><span class="octicon octicon-link"></span></a>Example 10: zero padded number animation</h3>
+<pre><code>&lt;p&gt;
+  Signatures gathered: &lt;span id="signatures"&gt;000000&lt;/span&gt;
+  &lt;br&gt;
+  &lt;button id="start-campaign"&gt;Start campaign&lt;/button&gt;
+&lt;/p&gt;
+
+&lt;script type="text/javascript"&gt;
+  var max_number = 100000;
+
+  var padding_zeros = '';
+  for(var i = 0, l = max_number.toString().length; i < l; i++) {
+    padding_zeros += '0';
+  }
+
+  var padded_now, numberStep = function(now, tween) {
+    var target = $(tween.elem),
+        rounded_now = Math.round(now);
+
+    var rounded_now_string = rounded_now.toString()
+    padded_now = padding_zeros + rounded_now_string;
+    padded_now = padded_now.substring(rounded_now_string.length);
+
+    target.prop('number', rounded_now).text(padded_now);
+  };
+
+  var use_max_power = $('#checkbox');
+  $('#start-campaign').click(function(){
+    $('#signatures').animateNumber({
+      number: max_number,
+      numberStep: numberStep
+    }, 5000);
+  });
+&lt;/script&gt;
+</code></pre>
+        <p>
+          Signatures gathered: <span id="signatures">000000</span>
+          <br>
+          <button id="start-campaign">Start campaign</button>
+        </p>
+        <script type="text/javascript">
+          var max_number = 100000;
+
+          var padding_zeros = '';
+          for(var i = 0, l = max_number.toString().length; i < l; i++) {
+            padding_zeros += '0';
+          }
+
+          var padded_now, numberStep = function(now, tween) {
+            var target = $(tween.elem),
+                rounded_now = Math.round(now);
+
+            var rounded_now_string = rounded_now.toString()
+            padded_now = padding_zeros + rounded_now_string;
+            padded_now = padded_now.substring(rounded_now_string.length);
+
+            target.prop('number', rounded_now).text(padded_now);
+          };
+
+          var use_max_power = $('#checkbox');
+          $('#start-campaign').click(function(){
+            $('#signatures').animateNumber({
+              number: max_number,
+              numberStep: numberStep
+            }, 5000);
+          });
+        </script>
+      </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/aishek">aishek</a></p>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
