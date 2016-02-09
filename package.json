@@ -23,6 +23,7 @@
   ],
   "author": "Alexandr Borisov (aishek@gmail.com)",
   "license": "MIT",
+  "main": "jquery.animateNumber.js",
   "bugs": {
     "url": "https://github.com/aishek/jquery-animateNumber/issues"
   },
