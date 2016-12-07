@@ -63,12 +63,12 @@ $('#fun-level').animateNumber(
 
 It is free software, and may be redistributed under the terms specified in the LICENSE file.
 
-## Credits
-
-jquery-animateNumber is maintained by [Cifronomika](http://cifronomika.ru/).
-
-Contributors:
+## Contributors
 
 * [Alexandr Borisov](https://github.com/aishek)
 * [Greg Thornton](https://github.com/xdissent)
 * [Tomáš Opekar](https://github.com/topik)
+
+## A bit of advertising
+
+Since 2010 lead my own software development company [Cifronomika](http://cifronomika.com/). We doing Ruby on Rails development. Feel free to contact us :-)
