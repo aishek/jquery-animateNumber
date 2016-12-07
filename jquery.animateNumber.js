@@ -119,7 +119,8 @@
         suffix = suffix || '';
 
         return function(now, tween) {
-          var floored_number = Math.floor(now),
+          var negative = now < 0,
+              floored_number = Math.floor((negative ? -1 : 1) * now),
               separated_number = floored_number.toString(),
               target = $(tween.elem);
 
@@ -130,7 +131,7 @@
             separated_number = reverse(separated_number);
           }
 
-          target.prop('number', now).text(separated_number + suffix);
+          target.prop('number', now).text((negative ? '-' : '') + separated_number + suffix);
         };
       }
     }
