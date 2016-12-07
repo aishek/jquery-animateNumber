@@ -1,6 +1,6 @@
 {
   "name": "jquery.animate-number",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "dependencies": {
     "jquery": ">= 1.7.0"
   },
