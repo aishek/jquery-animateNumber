@@ -1,13 +1,13 @@
 {
   "name": "jquery.animate-number",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "dependencies": {
+    "google-closure-compiler": "^20171112.0.0",
     "jquery": ">= 1.7.0"
   },
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-closure-compiler": "~0.0.21"
+    "grunt": "~1.0",
+    "grunt-contrib-watch": "~1.0"
   },
   "description": "jQuery animate number plugin",
   "repository": {

@@ -1,4 +1,4 @@
-/** @preserve jQuery animateNumber plugin v0.0.14
+/** @preserve jQuery animateNumber plugin v0.0.15
  * (c) 2013, Alexandr Borisov.
  * https://github.com/aishek/jquery-animateNumber
  */
@@ -14,7 +14,11 @@
       var floored_number = Math.floor(now),
           target = $(tween.elem);
 
-      target.text(floored_number);
+      if (target.prop("tagName") === "INPUT") {
+          target.prop("value",floored_number);
+      } else {
+          target.text(floored_number);
+      }
     }
   };
 
@@ -88,7 +92,12 @@
           var floored_number = Math.floor(now),
               target = $(tween.elem);
 
-          target.prop('number', now).text(floored_number + suffix);
+          target.prop('number', now);
+          if (target.prop("tagName") === "INPUT") {
+              target.prop("value",(floored_number + suffix));
+            } else {
+              target.text(floored_number + suffix);
+          }
         };
       },
 
@@ -131,7 +140,12 @@
             separated_number = reverse(separated_number);
           }
 
-          target.prop('number', now).text((negative ? '-' : '') + separated_number + suffix);
+          target.prop('number', now);
+          if (target.prop("tagName") === "INPUT") {
+              target.prop("value", ((negative ? '-' : '') + separated_number + suffix));
+          } else {
+              target.text((negative ? '-' : '') + separated_number + suffix);
+          }
         };
       }
     }

@@ -50,7 +50,7 @@ $('#fun-level').animateNumber(
 
 1. `npm install grunt-cli -g`
 2. `npm install`
-3. `https://github.com/gmarty/grunt-closure-compiler`
+3. `npm install --save google-closure-compiler`
 4. `grunt watch`
 
 ## Note on Patches / Pull Requests
