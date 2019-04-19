@@ -26,8 +26,6 @@ $('#fun-level').animateNumber(
     color: 'green', // требует jquery.color
     'font-size': '50px',
 
-    easing: 'easeInQuad', // требует jquery.easing
-
     // опциональный аргумент: функция шага анимации числа
     // здесь используется, чтобы добавить '%' в конце числа
     numberStep: function(now, tween) {
@@ -37,7 +35,10 @@ $('#fun-level').animateNumber(
       target.text(floored_number + ' %');
     }
   },
-  1800
+  {
+    easing: 'swing',
+    duration: 1800
+  }
 );
 ```
 

@@ -25,8 +25,6 @@ $('#fun-level').animateNumber(
     color: 'green', // require jquery.color
     'font-size': '50px',
 
-    easing: 'easeInQuad', // require jquery.easing
-
     // optional custom step function
     // using here to keep '%' sign after number
     numberStep: function(now, tween) {
@@ -36,7 +34,10 @@ $('#fun-level').animateNumber(
       target.text(floored_number + ' %');
     }
   },
-  1800
+  {
+    easing: 'swing',
+    duration: 1800
+  }
 );
 ```
 
