@@ -79,11 +79,12 @@ $('#fun-level').animateNumber(
     color: 'green',
     'font-size': '30px',
 
-    easing: 'easeInQuad',
-
     numberStep: percent_number_step
   },
-  15000
+  {
+    easing: 'swing',
+    duration: 15000
+  }
 );
 </code></pre>
         <p>Fun level <span id="fun-level" style="color: red;">0 %</span>.</p>
@@ -97,11 +98,12 @@ $('#fun-level').animateNumber(
                 color: 'green',
                 'font-size': '30px',
 
-                easing: 'easeInQuad',
-
                 numberStep: percent_number_step
               },
-              15000
+              {
+                easing: 'swing',
+                duration: 15000
+              }
             );
             return false;
           });
