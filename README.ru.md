@@ -71,6 +71,8 @@ jquery-animateNumber является бесплатным ПО, подробн�
 * [Greg Thornton](https://github.com/xdissent)
 * [Tomáš Opekar](https://github.com/topik)
 
-## Минутка рекламы
+## Спонсоры
 
-Я руковожу [Цифрономикой](http://cifronomika.ru/). Мы занимаемся разработкой на Ruby on Rails. Пишите!
+Разработку спонсирует компания [JetRockets](http://www.jetrockets.pro).
+
+<img src="https://media.jetrockets.pro/jetrockets-white.svg" width="250" alt="JetRockets">

@@ -70,6 +70,8 @@ It is free software, and may be redistributed under the terms specified in the L
 * [Greg Thornton](https://github.com/xdissent)
 * [Tomáš Opekar](https://github.com/topik)
 
-## A bit of advertising
+## Credits
 
-Since 2010 lead my own software development company [Cifronomika](http://cifronomika.com/). We doing Ruby on Rails development. Feel free to contact us :-)
+Sponsored by [JetRockets](http://www.jetrockets.pro).
+
+<img src="https://media.jetrockets.pro/jetrockets-white.svg" width="250" alt="JetRockets">
