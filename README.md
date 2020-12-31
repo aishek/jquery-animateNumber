@@ -69,9 +69,3 @@ It is free software, and may be redistributed under the terms specified in the L
 * [Alexandr Borisov](https://github.com/aishek)
 * [Greg Thornton](https://github.com/xdissent)
 * [Tomáš Opekar](https://github.com/topik)
-
-## Credits
-
-Sponsored by [JetRockets](http://www.jetrockets.pro).
-
-<img src="https://media.jetrockets.pro/jetrockets-white.svg" width="250" alt="JetRockets">
